@@ -283,14 +283,14 @@ public class HandgunScriptLPFP : MonoBehaviour {
 		{
 			anim.Play ("Knife Attack 1", 0, 0f);
 		}
-		//Play knife attack 2 animation when F key is pressed
-		if (Input.GetKeyDown (KeyCode.F) && !isInspecting) 
-		{
-			anim.Play ("Knife Attack 2", 0, 0f);
-		}
-			
-		//Throw grenade when pressing G key
-		if (Input.GetKeyDown (KeyCode.G) && !isInspecting) 
+        //Play knife attack 2 animation when F key is pressed
+        if (Input.GetKeyDown(KeyCode.F) && !isInspecting)
+        {
+            //anim.Play("Knife Attack 2", 0, 0f);
+        }
+
+        //Throw grenade when pressing G key
+        if (Input.GetKeyDown (KeyCode.G) && !isInspecting) 
 		{
 			StartCoroutine (GrenadeSpawnDelay ());
 			//Play grenade throw animation
