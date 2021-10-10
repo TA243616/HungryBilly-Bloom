@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
 
     bool attacking = false;
     bool dying = false;
+    public bool headHit = false;
+    public bool bodyHit = false;
 
     private string
         IDLE = "Z_Idle",

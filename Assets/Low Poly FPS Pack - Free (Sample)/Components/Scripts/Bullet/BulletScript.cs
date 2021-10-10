@@ -58,7 +58,27 @@ public class BulletScript : MonoBehaviour {
 			//Destroy bullet object
 			Destroy(gameObject);
 		}
-			
+
+		//If bullet collides with "Headshot" tag
+		if (collision.transform.tag == "Headshot")
+		{
+			//Toggle "headHit" on target object
+			collision.transform.gameObject.GetComponent
+				<EnemyController>().headHit = true;
+			Debug.Log("Headshot");
+			//Destroy bullet object
+			Destroy(gameObject);
+		}
+		if (collision.transform.tag == "Bodyshot")
+		{
+			//Toggle "headHit" on target object
+			collision.transform.gameObject.GetComponent
+				<EnemyController>().bodyHit = true;
+			Debug.Log("Bodyshot");
+			//Destroy bullet object
+			Destroy(gameObject);
+		}
+
 		//If bullet collides with "ExplosiveBarrel" tag
 		if (collision.transform.tag == "ExplosiveBarrel") 
 		{
