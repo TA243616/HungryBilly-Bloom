@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,8 +13,11 @@ public class EnemyController : MonoBehaviour
 
     bool attacking = false;
     bool dying = false;
+
+    private float health = 100;
     public bool headHit = false;
     public bool bodyHit = false;
+    public bool grenadeHit = false;
 
     private string
         IDLE = "Z_Idle",
@@ -48,6 +52,36 @@ public class EnemyController : MonoBehaviour
                 ChangeAnimationState(WALK);
             }
         }
+        if (bodyHit)
+        {
+            DeductHealth(34);
+        }
+        if (grenadeHit)
+        {
+            DeductHealth(100);
+        }
+        if (health <= 0)
+        {
+            dying = true;
+            zombie.isStopped = true;
+            ChangeAnimationState(FALL_BACK);
+            StartCoroutine(Despawn());
+        }
+    }
+
+    private void DeductHealth(float amount)
+    {
+        health -= amount;
+        bodyHit = false;
+        headHit = false;
+        grenadeHit = false;
+    }
+
+    private IEnumerator Despawn()
+    {
+        yield return new WaitForSeconds(4);
+        GameManager.spawned -= 1;
+        Destroy(this.gameObject);
     }
 
     private void ChangeAnimationState(string newState)
@@ -59,7 +93,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !attacking)
+        if (other.CompareTag("Player") && !attacking && !dying)
         {
             attacking = true;
             ChangeAnimationState(ATTACK);

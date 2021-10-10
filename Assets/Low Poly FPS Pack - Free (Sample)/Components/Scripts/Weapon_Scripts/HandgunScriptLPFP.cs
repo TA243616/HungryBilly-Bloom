@@ -63,6 +63,8 @@ public class HandgunScriptLPFP : MonoBehaviour {
 	private bool isWalking;
 	//Check if inspecting weapon
 	private bool isInspecting;
+	//Check if paused
+	private bool paused = false;
 
 	//How much ammo is currently left
 	private int currentAmmo;
@@ -241,34 +243,42 @@ public class HandgunScriptLPFP : MonoBehaviour {
 
 		//Timescale settings
 		//Change timescale to normal when 1 key is pressed
-		if (Input.GetKeyDown (KeyCode.Alpha1)) 
-		{
-			Time.timeScale = 1.0f;
-			timescaleText.text = "1.0";
-		}
+		//if (Input.GetKeyDown (KeyCode.Alpha1)) 
+		//{
+		//	Time.timeScale = 1.0f;
+		//	timescaleText.text = "1.0";
+		//}
 		//Change timescale to 50% when 2 key is pressed
-		if (Input.GetKeyDown (KeyCode.Alpha2)) 
-		{
-			Time.timeScale = 0.5f;
-			timescaleText.text = "0.5";
-		}
+		//if (Input.GetKeyDown (KeyCode.Alpha2)) 
+		//{
+		//	Time.timeScale = 0.5f;
+		//	timescaleText.text = "0.5";
+		//}
 		//Change timescale to 25% when 3 key is pressed
-		if (Input.GetKeyDown (KeyCode.Alpha3)) 
-		{
-			Time.timeScale = 0.25f;
-			timescaleText.text = "0.25";
-		}
+		//if (Input.GetKeyDown (KeyCode.Alpha3)) 
+		//{
+		//	Time.timeScale = 0.25f;
+		//	timescaleText.text = "0.25";
+		//}
 		//Change timescale to 10% when 4 key is pressed
-		if (Input.GetKeyDown (KeyCode.Alpha4)) 
-		{
-			Time.timeScale = 0.1f;
-			timescaleText.text = "0.1";
-		}
+		//if (Input.GetKeyDown (KeyCode.Alpha4)) 
+		//{
+		//	Time.timeScale = 0.1f;
+		//	timescaleText.text = "0.1";
+		//}
 		//Pause game when 5 key is pressed
-		if (Input.GetKeyDown (KeyCode.Alpha5)) 
+		if (Input.GetKeyDown (KeyCode.Escape)) 
 		{
-			Time.timeScale = 0.0f;
-			timescaleText.text = "0.0";
+			paused = !paused;
+            if (paused)
+            {
+				Time.timeScale = 0.0f;
+				timescaleText.text = "0.0";
+            }
+            else
+            {
+				Time.timeScale = 1.0f;
+			}
 		}
 
 		//Set current ammo text from ammo int

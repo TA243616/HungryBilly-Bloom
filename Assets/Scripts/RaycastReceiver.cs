@@ -10,7 +10,6 @@ public class RaycastReceiver : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(selected);
 
         if (Input.GetKeyDown(KeyCode.F) && selected)
         {

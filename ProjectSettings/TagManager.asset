@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Headshot
   - Bodyshot
+  - target
+  - Target
   layers:
   - Default
   - TransparentFX

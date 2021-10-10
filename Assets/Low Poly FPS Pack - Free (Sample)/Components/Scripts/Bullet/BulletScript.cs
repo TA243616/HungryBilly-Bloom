@@ -60,21 +60,22 @@ public class BulletScript : MonoBehaviour {
 		}
 
 		//If bullet collides with "Headshot" tag
-		if (collision.transform.tag == "Headshot")
-		{
-			//Toggle "headHit" on target object
-			collision.transform.gameObject.GetComponent
-				<EnemyController>().headHit = true;
-			Debug.Log("Headshot");
-			//Destroy bullet object
-			Destroy(gameObject);
-		}
+		//if (collision.transform.tag == "Headshot")
+		//{
+		//	Debug.Log("Headshot");
+		//	//Toggle "headHit" on target object
+		//	collision.transform.gameObject.GetComponent
+		//		<EnemyController>().headHit = true;
+			
+		//	//Destroy bullet object
+		//	Destroy(gameObject);
+		//}
 		if (collision.transform.tag == "Bodyshot")
 		{
 			//Toggle "headHit" on target object
 			collision.transform.gameObject.GetComponent
 				<EnemyController>().bodyHit = true;
-			Debug.Log("Bodyshot");
+
 			//Destroy bullet object
 			Destroy(gameObject);
 		}

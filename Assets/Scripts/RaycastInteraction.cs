@@ -20,7 +20,6 @@ public class RaycastInteraction : MonoBehaviour
         }else if (lastHit != null)
         {
             lastHit.selected = false;
-            Debug.Log(lastHit.gameObject.name);
         }
     }
 }

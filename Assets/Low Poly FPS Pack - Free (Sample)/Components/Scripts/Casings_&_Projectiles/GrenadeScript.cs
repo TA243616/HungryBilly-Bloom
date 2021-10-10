@@ -96,11 +96,19 @@ public class GrenadeScript : MonoBehaviour {
 				hit.gameObject.GetComponent<TargetScript>().isHit = true;
 			}
 
+			//If the explosion hits "Bodyshot" tag
+			if (hit.GetComponent<Collider>().tag == "Bodyshot")
+			{
+				//Toggle "grenadeHit" on enemy
+				//hit.gameObject.GetComponent<EnemyController>().grenadeHit = true;
+				rb.gameObject.GetComponent<EnemyController>().grenadeHit = true;
+			}
+
 			//If the explosion hits "ExplosiveBarrel" tag
 			if (hit.GetComponent<Collider>().tag == "ExplosiveBarrel") 
 			{
 				//Toggle "explode" on explosive barrel object
-				hit.gameObject.GetComponent<ExplosiveBarrelScript> ().explode = true;
+				hit.transform.gameObject.GetComponent<ExplosiveBarrelScript> ().explode = true;
 			}
 		}
 
